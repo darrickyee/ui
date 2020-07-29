@@ -1,0 +1,277 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../res/fonts/Roboto-Light.ttf');
+}
+
+/* ------------ Alegreya ----------- */
+
+@font-face {
+    font-family: 'Alegreya';
+    src: url('../res/fonts/Alegreya-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alegreya';
+    src: url('../res/fonts/Alegreya-Italic.ttf');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Alegreya';
+    src: url('../res/fonts/Alegreya-Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alegreya';
+    src: url('../res/fonts/Alegreya-MediumItalic.ttf');
+    font-weight: 500;
+    font-style: italic;
+}
+
+/* ------------ Alegreya SC ----------- */
+
+@font-face {
+    font-family: 'Alegreya SC';
+    src: url('../res/fonts/AlegreyaSC-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alegreya SC';
+    src: url('../res/fonts/AlegreyaSC-Italic.ttf');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Alegreya SC';
+    src: url('../res/fonts/AlegreyaSC-Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alegreya SC';
+    src: url('../res/fonts/AlegreyaSC-MediumItalic.ttf');
+    font-weight: 500;
+    font-style: italic;
+}
+
+/* ------------ Alegreya Sans ----------- */
+
+@font-face {
+    font-family: 'Alegreya Sans';
+    src: url('../res/fonts/AlegreyaSans-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alegreya Sans';
+    src: url('../res/fonts/AlegreyaSans-Italic.ttf');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Alegreya Sans';
+    src: url('../res/fonts/AlegreyaSans-Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alegreya Sans';
+    src: url('../res/fonts/AlegreyaSans-MediumItalic.ttf');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Alegreya Sans';
+    src: url('../res/fonts/AlegreyaSans-Light.ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alegreya Sans';
+    src: url('../res/fonts/AlegreyaSans-LightItalic.ttf');
+    font-weight: 300;
+    font-style: italic;
+}
+
+/* ------------ Alegreya Sans SC ----------- */
+
+@font-face {
+    font-family: 'Alegreya Sans SC';
+    src: url('../res/fonts/AlegreyaSansSC-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alegreya Sans SC';
+    src: url('../res/fonts/AlegreyaSansSC-Italic.ttf');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Alegreya Sans SC';
+    src: url('../res/fonts/AlegreyaSansSC-Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alegreya Sans SC';
+    src: url('../res/fonts/AlegreyaSansSC-MediumItalic.ttf.ttf');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Alegreya Sans SC';
+    src: url('../res/fonts/AlegreyaSansSC-Light.ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alegreya Sans SC';
+    src: url('../res/fonts/AlegreyaSansSC-LightItalic.ttf');
+    font-weight: 300;
+    font-style: italic;
+}
+
+/* ------------ Spectral ----------- */
+
+@font-face {
+    font-family: 'Spectral';
+    src: url('../res/fonts/Spectral-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Spectral';
+    src: url('../res/fonts/Spectral-Italic.ttf');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Spectral';
+    src: url('../res/fonts/Spectral-Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Spectral';
+    src: url('../res/fonts/Spectral-MediumItalic.ttf');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Spectral';
+    src: url('../res/fonts/Spectral-Light.ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Spectral';
+    src: url('../res/fonts/Spectral-LightItalic.ttf');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Spectral SC';
+    src: url('../res/fonts/SpectralSC-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Spectral SC';
+    src: url('../res/fonts/SpectralSC-Italic.ttf');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Spectral SC';
+    src: url('../res/fonts/SpectralSC-Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Spectral SC';
+    src: url('../res/fonts/SpectralSC-MediumItalic.ttf.ttf');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Spectral SC';
+    src: url('../res/fonts/SpectralSC-Light.ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Spectral SC';
+    src: url('../res/fonts/SpectralSC-LightItalic.ttf');
+    font-weight: 300;
+    font-style: italic;
+}
+
+/* ------------ Overlock ----------- */
+
+@font-face {
+    font-family: 'Overlock';
+    src: url('../res/fonts/Overlock-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Overlock';
+    src: url('../res/fonts/Overlock-Italic.ttf');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Overlock';
+    src: url('../res/fonts/Overlock-Bold.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Overlock';
+    src: url('../res/fonts/Overlock-BoldItalic.ttf');
+    font-weight: 500;
+    font-style: italic;
+}
+
+/* ------------ Overlock SC ----------- */
+
+@font-face {
+    font-family: 'Overlock SC';
+    src: url('../res/fonts/OverlockSC-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+}

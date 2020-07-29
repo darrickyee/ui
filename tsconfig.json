@@ -1,0 +1,20 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "module": "es2015",
+        "target": "es2017",
+        "lib": ["es2017", "dom", "dom.iterable"],
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "outDir": "./src",
+        "allowJs": false,
+        "typeRoots": ["./ts/typings", "node_modules/@types"],
+        "plugins": [
+            {
+                "name": "typescript-lit-html-plugin"
+            }
+        ]
+    },
+    "include": ["./ts/**/*"],
+    "exclude": ["node_modules"]
+}
