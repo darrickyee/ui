@@ -1,4 +1,4 @@
-import { keys, pick } from 'ramda';
+import { keys, pick, toPairs } from 'ramda';
 import { parseColor } from '../lib/util';
 import { types, Instance, applySnapshot, getSnapshot } from 'mobx-state-tree';
 
@@ -7,23 +7,79 @@ const DisplayName = types.model('Name', {
     color: types.array(types.number),
 });
 
-const Vector = types.model('Vector', {
-    x: 0.0,
-    y: 0.0,
-    z: 0.0,
-});
+export const Vector = types
+    .model('Vector', {
+        x: 0.0,
+        y: 0.0,
+        z: 0.0,
+    })
+    .actions((self) => ({
+        setComponent(value: number, axis: 'x' | 'y' | 'z') {
+            self[axis] = value;
+        },
+        setValue(value: [number, number, number]) {
+            self.x = value[0];
+            self.y = value[1];
+            self.z = value[2];
+        },
+    }));
 
-const Rotation = types.model('Rotation', {
-    roll: 0.0,
-    pitch: 0.0,
-    yaw: 0.0,
-});
+const rot_axis_map = {
+    x: 'roll',
+    y: 'pitch',
+    z: 'yaw',
+};
 
-const Transform = types.model('Transform', {
-    location: Vector,
-    rotation: Rotation,
-    scale: Vector,
-});
+export const Rotation = types
+    .model('Rotation', {
+        roll: 0.0,
+        pitch: 0.0,
+        yaw: 0.0,
+    })
+    .actions((self) => ({
+        setComponent(value: number, axis: 'roll' | 'pitch' | 'yaw' | 'x' | 'y' | 'z') {
+            if (['x', 'y', 'z'].includes(axis)) axis = rot_axis_map[axis];
+            self[axis] = value;
+        },
+        setValue(value: [number, number, number]) {
+            self.roll = value[0];
+            self.pitch = value[1];
+            self.yaw = value[2];
+        },
+    }));
+
+export const Transform = types
+    .model('Transform', {
+        translation: types.optional(Vector, {}),
+        rotation: types.optional(Rotation, {}),
+        scale: types.optional(Vector, {}),
+    })
+    .actions((self) => {
+        function setComponent(
+            component: 'translation' | 'rotation' | 'scale',
+            value: [number, number, number] | number,
+            axis: 'x' | 'y' | 'z' | 'roll' | 'pitch' | 'yaw' = null
+        ) {
+            // @ts-ignore
+            if (axis) self[component].setComponent(value as number, axis);
+            else self[component].setValue(value as [number, number, number]);
+        }
+
+        return {
+            setTranslation(value: [number, number, number] | number, axis: 'x' | 'y' | 'z' = null) {
+                setComponent('translation', value, axis);
+            },
+            setRotation(
+                value: [number, number, number] | number,
+                axis: 'x' | 'y' | 'z' | 'roll' | 'pitch' | 'yaw' = null
+            ) {
+                setComponent('rotation', value, axis);
+            },
+            setScale(value: [number, number, number] | number, axis: 'x' | 'y' | 'z' = null) {
+                setComponent('scale', value, axis);
+            },
+        };
+    });
 
 const DefaultActions = types.model({}).actions((self) => ({
     reset(obj = {}) {
@@ -38,7 +94,7 @@ const DefaultActions = types.model({}).actions((self) => ({
     },
 }));
 
-const Interaction = types.compose(
+export const Interaction = types.compose(
     types.model('Interaction', {
         name: '',
         keys: types.optional(types.array(types.string), []),
@@ -46,7 +102,7 @@ const Interaction = types.compose(
     DefaultActions
 );
 
-const Target = types.compose(
+export const Target = types.compose(
     types
         .model('Target', {
             name: '',
@@ -61,18 +117,20 @@ const Target = types.compose(
     DefaultActions
 );
 
-const Location = types.compose(types.model('Location', { level: '', area: '' }), DefaultActions);
+export const Location = types.compose(
+    types.model('Location', { level: '', area: '' }),
+    DefaultActions
+);
 
-const Period = types.compose(types.model('Period', { day: '', time: '' }), DefaultActions);
-
-export const ModelTypes = {
-    interaction: Interaction,
-    target: Target,
-    location: Location,
-    period: Period,
-};
+export const Period = types.compose(types.model('Period', { day: '', time: '' }), DefaultActions);
 
 export const ActionTypes = { DefaultActions };
+
+export const DlgText = types.model('DlgText', { speaker: '', text: '' });
+
+export type VectorModel = Instance<typeof Vector>;
+export type RotationModel = Instance<typeof Rotation>;
+export type TransformModel = Instance<typeof Transform>;
 
 export type InteractionModel = Instance<typeof Interaction>;
 export type TargetModel = Instance<typeof Target>;

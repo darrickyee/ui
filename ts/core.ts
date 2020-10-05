@@ -1,42 +1,33 @@
 /// <reference path="../res/script/ue4.d.ts" />
-import { autorun } from 'mobx';
-import { curry, has, mapObjIndexed, map, keys, pick, intersection } from 'ramda';
-import { types, getSnapshot, applySnapshot } from 'mobx-state-tree';
-import { ModelTypes, ActionTypes } from './models/models';
+import { curry, has, keys } from 'ramda';
+import { getSnapshot, applySnapshot } from 'mobx-state-tree';
 
-const SendEvent = ue.interface.broadcast;
+const CallUE = ue4;
 
-const Initialize = (initialState, updater: (store) => () => void) => {
-    const store = types
-        .model(
-            'Root',
-            mapObjIndexed((_, key) => ModelTypes[key], initialState)
-        )
-        .actions((self) => ({
-            reset(obj = {}) {
-                keys(self).forEach((k) => self[k].reset && self[k].reset(obj[k] || {}));
-            },
-            update(obj) {
-                intersection(keys(self), keys(obj)).forEach((k: string) => {
-                    self[k].update && self[k].update(obj[k]);
-                });
-            },
-        }))
-        .create(initialState);
+const RegisterForUpdates = (models) => {
+    CallUE('RegisterForUpdates', keys(models));
+};
 
-    autorun(updater(store));
+const Updater = curry((models, snapshots) => {
+    keys(snapshots)
+        .filter((key: string) => has(key, models))
+        .forEach((key) => {
+            applySnapshot(models[key], snapshots[key]);
+        });
+});
+
+const Initialize = (models) => {
+    RegisterForUpdates(models);
+
+    Object.assign(ue.interface, { Update: Updater(models) });
 
     Object.assign(window, {
-        store,
         getSnapshot,
         applySnapshot,
-        setState: store.reset,
-        updateState: store.update,
+        models,
     });
 
-    Object.assign(ue.interface, { SetState: store.reset, UpdateState: store.update });
-
-    SendEvent('UiInitialized');
+    CallUE('UiInitialized');
 };
 
 export default { Initialize };

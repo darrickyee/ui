@@ -1,8 +1,12 @@
 :root {
-    --ue-font-family: 'Alegreya Sans';
+    --ue-font-family: Roboto;
+    --ue-font-family-serif: Roboto;
+    --ue-font-family-sc: Roboto;
+    --ue-font-family-serif-sc: Roboto;
+    /* --ue-font-family: 'Alegreya Sans';
     --ue-font-family-serif: Alegreya;
     --ue-font-family-sc: 'Alegreya Sans SC';
-    --ue-font-family-serif-sc: 'Alegreya SC';
+    --ue-font-family-serif-sc: 'Alegreya SC'; */
     --ue-font-size: 32px;
 
     --ue-color: #fff;
@@ -28,14 +32,17 @@
     --ue-border-blur: 1px;
 
     --ue-transition: background-color 0.5s, color 0.5s, transform 0.5s, border 0.5s;
+    --shadow-color: rgba(0, 0, 0, 0.5);
 
     font-family: var(--ue-font-family);
     font-size: var(--ue-font-size);
     font-weight: lighter;
 
     --ue-border-blur: 1px;
-    text-shadow: -1px -1px 1px #000, 0 -1px 1px #000, 1px -1px 1px #000, 1px 0 1px #000,
-        1px 1px 1px #000, 0 1px 1px #000, -1px 1px 1px #000, -1px 0 1px #000;
+    text-shadow: -1px -1px 1px var(--shadow-color), 0 -1px 1px var(--shadow-color),
+        1px -1px 1px var(--shadow-color), 1px 0 1px var(--shadow-color),
+        1px 1px 1px var(--shadow-color), 0 1px 1px var(--shadow-color),
+        -1px 1px 1px var(--shadow-color), -1px 0 1px var(--shadow-color);
     color: white;
 }
 
@@ -85,6 +92,11 @@ body {
     border: none;
     overflow: hidden;
     margin: 0;
+}
+
+#target {
+    position: absolute;
+    transform: translateX(-50%);
 }
 
 .glow {
@@ -222,11 +234,35 @@ ue-progress-bar {
     --btn-click-transition: background-color 0.1s, border 0.1s, color 0.1s, transform 0.1s;
 }
 
-.centered {
+.centered-h {
     transform: translateX(-50%);
 }
 
-.pos-h-center {
+.centered-v {
+    transform: translateY(-50%);
+}
+
+.centered,
+#reticle {
+    transform: translate(-50%, -50%);
+}
+
+.pos-h-left,
+.pos-h-leftcenter,
+.pos-h-center,
+.pos-h-rightcenter,
+.pos-h-right,
+.pos-v-top,
+.pos-v-high,
+.pos-v-mid,
+.pos-v-low,
+.pos-v-bot,
+#reticle {
+    position: absolute;
+}
+
+.pos-h-center,
+#reticle {
     left: 50vw;
 }
 
@@ -246,8 +282,9 @@ ue-progress-bar {
     right: 25vw;
 }
 
-.pos-v-mid {
-    top: 40vh;
+.pos-v-mid,
+#reticle {
+    top: 50vh;
 }
 
 .pos-v-top {
@@ -255,7 +292,7 @@ ue-progress-bar {
 }
 
 .pos-v-high {
-    top: 25vh;
+    top: 30vh;
 }
 
 .pos-v-low {
