@@ -1,9 +1,8 @@
 /// <reference path="../res/script/ue4.d.ts" />
 import { autorun } from 'mobx';
-import { applySnapshot } from 'mobx-state-tree';
-import { render } from 'lit-html';
+import { render, html } from 'lit-html';
 import { dlgtext as t_dlgtext, target as t_target, location as t_xform } from './templates';
-import { DlgText, Target, Transform, TargetModel } from './models/models';
+import { DlgText, Target, Transform, TargetModel, DlgNodeModel, DlgNode } from './models';
 
 declare namespace CORE {
     function Initialize(models: { [k: string]: any }): void;
@@ -22,11 +21,13 @@ const initialState = {
     },
 
     period: { day: 'Monday', time: 'Afternoon' },
+
+    dlg: { speaker: 'Joe', text: 'Hello there!', responses: ['Ok.', 'Go fuck yourself.'] },
 };
 
 const target: TargetModel = Target.create(initialState.target);
+const dlg: DlgNodeModel = DlgNode.create(initialState.dlg);
 const xform = Transform.create({});
-const dlgtext = DlgText.create({});
 
 autorun(() => {
     render(t_target(target), document.querySelector('#target'));
@@ -36,8 +37,22 @@ autorun(() => {
     render(t_xform(xform), document.querySelector('#xform'));
 });
 
+const select = (option: number) => () => {
+    console.log(`Selected option ${option}`);
+};
+
+const t_dlgresponses = ({ responses }: DlgNodeModel) =>
+    html`
+        ${responses.map(
+            (r, i) => html`<button class="response-button" @click=${select(i)}>${r}</button>`
+        )}
+    `;
+
 autorun(() => {
-    render(t_dlgtext(dlgtext), document.querySelector('#dlgtext'));
+    render(t_dlgtext(dlg), document.querySelector('#dlgtext'));
+    render(t_dlgresponses(dlg), document.querySelector('#dlgresponses'));
 });
 
-CORE.Initialize({ dlgtext, target, xform });
+CORE.Initialize({ target, xform });
+
+Object.assign(window, { Transform });

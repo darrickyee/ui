@@ -302,3 +302,30 @@ ue-progress-bar {
 .pos-v-bot {
     bottom: 0;
 }
+
+#dlgresponses {
+    display: flex;
+    flex-direction: column;
+}
+
+.response-button {
+    background-color: var(--ue-bg-color);
+    color: var(--ue-color);
+    border: 1px solid transparent;
+    outline: none;
+    text-shadow: inherit;
+    width: 20em;
+    height: 2em;
+}
+
+.response-button:hover {
+    background-color: var(--ue-focus-bg-color);
+    color: var(--ue-focus-color);
+    border: var(--ue-focus-border);
+}
+
+.response-button:active {
+    background-color: var(--ue-active-bg-color);
+    color: var(--ue-active-color);
+    border: var(--ue-active-border);
+}

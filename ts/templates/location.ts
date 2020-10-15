@@ -7,8 +7,8 @@ const toString = (obj: { [k: string]: number }) =>
         .join(', ');
 
 const xform = ({ translation, rotation, scale }) =>
-    html`<div>Translation: ${toString(translation)}</div>
-        <div>Rotation: ${toString(rotation)}</div>
+    html`<div>Translation: ${toString(translation.toJSON())}</div>
+        <div>Rotation: ${toString(rotation.toJSON())}</div>
         <div>Scale: ${JSON.stringify(scale)}</div>`;
 
 export default xform;

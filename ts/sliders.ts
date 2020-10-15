@@ -1,7 +1,7 @@
 /// <reference path="../res/script/ue4.d.ts" />
 import { autorun } from 'mobx';
 import { render, html } from 'lit-html';
-import { Transform, TransformModel, VectorModel } from './models/models';
+import { Transform, VectorModel } from './models';
 import { UeSlider } from 'ue-elems';
 
 customElements.define('ue-slider', UeSlider);
@@ -22,22 +22,22 @@ const xform = Transform.create(initialState.slider);
 
 const sldrgrp = (vec: VectorModel) =>
     html`${Object.keys(vec).map(
-        (k) =>
+        (k: 'x' | 'y' | 'z') =>
             html`
                 <div class="slider-div" style="display: flex; align-items: center;">
                     ${k}:
                     <ue-slider
                         style="width: 40vw;"
                         @change=${(e) => {
-                            vec.setComponent(e.detail.value, k as 'x' | 'y' | 'z');
+                            vec.setValue(e.detail.value, k);
                         }}
                         .value=${vec[k]}
                     ></ue-slider>
                     <input
                         type="number"
-                        .value=${vec[k]}
+                        .value=${vec[k].toFixed(2)}
                         @input=${(e) => {
-                            vec.setComponent(parseFloat(e.target.value), k as 'x' | 'y' | 'z');
+                            vec.setValue(k, parseFloat(e.target.value));
                         }}
                     />
                 </div>
