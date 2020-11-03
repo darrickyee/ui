@@ -22,11 +22,11 @@ const initialState = {
 
     period: { day: 'Monday', time: 'Afternoon' },
 
-    dlg: { speaker: 'Joe', text: 'Hello there!', responses: ['Ok.', 'Go fuck yourself.'] },
+    dialogue: { speaker: 'Joe', text: 'Hello there!', responses: ['Ok.', 'Go fuck yourself.'] },
 };
 
 const target: TargetModel = Target.create(initialState.target);
-const dlg: DlgNodeModel = DlgNode.create(initialState.dlg);
+const dlg: DlgNodeModel = DlgNode.create(initialState.dialogue);
 const xform = Transform.create({});
 
 autorun(() => {

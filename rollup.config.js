@@ -1,5 +1,5 @@
 import resolve from '@rollup/plugin-node-resolve';
-// import replace from '@rollup/plugin-replace';
+import replace from '@rollup/plugin-replace';
 // import { terser } from 'rollup-plugin-terser';
 
 export default [
@@ -8,9 +8,9 @@ export default [
         output: { file: './dist/core.js', format: 'iife', name: 'CORE' },
         plugins: [
             resolve(),
-            // replace({
-            //     'process.env.NODE_ENV': JSON.stringify('production'),
-            // }),
+            replace({
+                'process.env.NODE_ENV': JSON.stringify('production'),
+            }),
             // terser(),
         ],
     },
@@ -18,9 +18,9 @@ export default [
         input: './src/hud.js',
         output: { file: './dist/hud.js', format: 'iife', name: 'HUD' },
         plugins: [
-            // replace({
-            //     'process.env.NODE_ENV': JSON.stringify('development'),
-            // }),
+            replace({
+                'process.env.NODE_ENV': JSON.stringify('development'),
+            }),
             resolve(),
             // terser(),
         ],
@@ -29,9 +29,9 @@ export default [
         input: './src/sliders.js',
         output: { file: './dist/sliders.js', format: 'iife', name: 'Sliders' },
         plugins: [
-            // replace({
-            //     'process.env.NODE_ENV': JSON.stringify('development'),
-            // }),
+            replace({
+                'process.env.NODE_ENV': JSON.stringify('development'),
+            }),
             resolve(),
             // terser(),
         ],
