@@ -6,12 +6,15 @@ import { DlgText, Target, Transform, TargetModel, DlgNodeModel, DlgNode } from '
 
 declare namespace CORE {
     function Initialize(models: { [k: string]: any }): void;
+    function CallUE(name: string, data?: any): void;
 }
 
 const initialState = {
     location: {
-        level: 'Default Level',
-        area: 'Default location',
+        player: {
+            level: 'Default Level',
+            area: 'Default location',
+        },
     },
 
     target: {
@@ -26,7 +29,7 @@ const initialState = {
 };
 
 const target: TargetModel = Target.create(initialState.target);
-const dlg: DlgNodeModel = DlgNode.create(initialState.dialogue);
+const dialogue: DlgNodeModel = DlgNode.create(initialState.dialogue);
 const xform = Transform.create({});
 
 autorun(() => {
@@ -39,6 +42,7 @@ autorun(() => {
 
 const select = (option: number) => () => {
     console.log(`Selected option ${option}`);
+    CORE.CallUE('SelectOption', option);
 };
 
 const t_dlgresponses = ({ responses }: DlgNodeModel) =>
@@ -49,10 +53,10 @@ const t_dlgresponses = ({ responses }: DlgNodeModel) =>
     `;
 
 autorun(() => {
-    render(t_dlgtext(dlg), document.querySelector('#dlgtext'));
-    render(t_dlgresponses(dlg), document.querySelector('#dlgresponses'));
+    render(t_dlgtext(dialogue), document.querySelector('#dlgtext'));
+    render(t_dlgresponses(dialogue), document.querySelector('#dlgresponses'));
 });
 
-CORE.Initialize({ target, xform });
+CORE.Initialize({ target, xform, dialogue });
 
 Object.assign(window, { Transform });

@@ -30,4 +30,4 @@ const Initialize = (models) => {
     CallUE('UiInitialized');
 };
 
-export default { Initialize };
+export default { Initialize, CallUE };
