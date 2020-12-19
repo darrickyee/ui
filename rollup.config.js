@@ -26,6 +26,17 @@ export default [
         ],
     },
     {
+        input: './src/dlg.js',
+        output: { file: './dist/dlg.js', format: 'iife', name: 'DLG' },
+        plugins: [
+            replace({
+                'process.env.NODE_ENV': JSON.stringify('development'),
+            }),
+            resolve(),
+            // terser(),
+        ],
+    },
+    {
         input: './src/sliders.js',
         output: { file: './dist/sliders.js', format: 'iife', name: 'Sliders' },
         plugins: [

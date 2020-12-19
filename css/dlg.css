@@ -1,0 +1,27 @@
+#dlg-responses {
+    display: flex;
+    flex-direction: column;
+}
+
+#dlg-responses > button {
+    font-size: 0.75em;
+    background-color: var(--ue-bg-color);
+    color: var(--ue-color);
+    border: 1px solid transparent;
+    outline: none;
+    text-shadow: inherit;
+    width: 12em;
+    height: 2em;
+}
+
+#dlg-responses > button:hover {
+    background-color: var(--ue-focus-bg-color);
+    color: var(--ue-focus-color);
+    border: var(--ue-focus-border);
+}
+
+#dlg-responses > button:active {
+    background-color: var(--ue-active-bg-color);
+    color: var(--ue-active-color);
+    border: var(--ue-active-border);
+}

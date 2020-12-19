@@ -36,9 +36,9 @@ autorun(() => {
     render(t_target(target), document.querySelector('#target'));
 });
 
-autorun(() => {
-    render(t_xform(xform), document.querySelector('#xform'));
-});
+// autorun(() => {
+//     render(t_xform(xform), document.querySelector('#xform'));
+// });
 
 const select = (option: number) => () => {
     console.log(`Selected option ${option}`);
